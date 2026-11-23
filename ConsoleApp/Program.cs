@@ -107,3 +107,19 @@ Console.WriteLine(Math.Round(3.5, MidpointRounding.AwayFromZero));
 
 Console.WriteLine(Math.Round(3.52250, 3));
 Console.WriteLine(Math.Round(3.52250, 3, MidpointRounding.AwayFromZero));
+
+
+
+Console.WriteLine("Podaj pierwszy bok prostokąta:");
+string sizeA = Console.ReadLine();
+Console.WriteLine("Podaj drugi bok prostokąta:");
+string sizeB = Console.ReadLine();
+
+
+float floatSizeA = float.Parse(sizeA); //konwersja string na float
+float floatSizeB = float.Parse(sizeB);
+Console.WriteLine($"Pole prostokąta to {floatSizeA * floatSizeB}");
+
+int intSizeA = int.Parse(sizeA);
+int intSizeB = int.Parse(sizeB);
+Console.WriteLine($"Pole prostokąta to {intSizeA * intSizeB}");
