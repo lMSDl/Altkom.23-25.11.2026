@@ -123,3 +123,44 @@ Console.WriteLine($"Pole prostokąta to {floatSizeA * floatSizeB}");
 int intSizeA = int.Parse(sizeA);
 int intSizeB = int.Parse(sizeB);
 Console.WriteLine($"Pole prostokąta to {intSizeA * intSizeB}");
+
+
+float number = 9.12345f;
+double roundedNumber = Math.Round(number, 2);
+
+string roundedNumberString = roundedNumber.ToString(); //formatowanie liczby zmiennoprzecinkowej do stringa z dwoma miejscami po przecinku
+Console.WriteLine(roundedNumberString);
+
+//metoda ToString() - konwertuje liczbę na stringa i przyjmuje jako argument format
+//formaty:
+//f - format liczby zmiennoprzecinkowej
+//0 - placeholder dla cyfry, jeśli liczba jest mniejsza niż 1 to zostanie dodane 0 przed przecinkiem
+//# - opcjonalny placeholder dla cyfry, jeśli liczba jest mniejsza niż 1 to nie zostanie dodane 0 przed przecinkiem
+//. - separator dziesiętny
+//, - separator tysięcy
+
+
+Console.WriteLine(number.ToString("f3"));   //liczba z trzema miejscami po przecinku
+Console.WriteLine(number.ToString("f2"));   //liczba z dwoma miejscami po przecinku
+
+Console.WriteLine(number.ToString("0.00")); 
+Console.WriteLine(number.ToString("00.00"));
+
+Console.WriteLine(number.ToString("0.00#######"));
+Console.WriteLine(number.ToString("0.000000000"));
+
+number = 123123123;
+Console.WriteLine(number.ToString("### ### ###")); //separatorem jest spacja
+Console.WriteLine(number.ToString("###,###,###")); //separatorem jest ustawienie z kultury (np. przecinek w USA, spacja w Polsce)
+
+//to samo można zrobić z interpolacją stringów
+Console.WriteLine($"{number:f2}");
+Console.WriteLine($"{number:0.00}");
+Console.WriteLine($"{2:0.00}");
+Console.WriteLine($"{number:0.##}");
+Console.WriteLine($"{2:0.##}");
+Console.WriteLine($"{2:0.0#}");
+
+number = 1f / 3;
+Console.WriteLine(number.ToString("0#.00")); //liczba z zerem wiodącym i dwoma miejscami po przecinku (twardymni)
+Console.WriteLine($"{number:0#.##}"); //liczba z zerem wiodącym i dwoma miejscami po przecinku (miękkimni)
