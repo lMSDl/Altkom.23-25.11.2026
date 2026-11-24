@@ -3,164 +3,58 @@
 
 //Subjects.Introduction();
 //Subjects.Strings();
+//Subjects.Numbers();
+
+int intValue = 5;
+long longValue = intValue;
+
+Console.WriteLine(longValue);
 
 
-string sa = "11";
-string sb = "4";
-string sc = sa + sb; //łączenie stringów za pomocą operacji + (konkatenacja) - wynik będzie "114" ponieważ 11 i 4 są traktowane jako tekst
-Console.WriteLine(sc);
+//błąd kompilacji, ponieważ zakres intValue jest mniejszy niż longValue
+//intValue = longValue;
 
-//int - typ całkowity 32-bitowy, czyli liczby całkowite
-//long - typ całkowity 64-bitowy, czyli liczby całkowite o większym zakresie
-int a = 11;
-int b = 4;
-
-// w przeciwieńśtwie do konkatenacji stringów, operacje na liczbach całkowitych (int) będą wykonywane matematycznie
-int c = a + b;
-Console.WriteLine($"{a} + {b} = {c}");
-c = a - b;
-Console.WriteLine($"{a} - {b} = {c}");
-c = a * b;
-Console.WriteLine($"{a} * {b} = {c}");
-c = a / b; //dzielenie całkowite, czyli wynik jest ucinany do liczby całkowitej (nie zaokrąglany!)
-Console.WriteLine($"{a} / {b} = {c}");
-c = a % b; //modulo - reszta z dzielenia
-Console.WriteLine($"{a} % {b} = {c}");
-
-//łączenie stringów i liczb całkowitych (int) za pomocą operacji + (konkatenacja) - wynik będzie "2114" ponieważ 2, 11 i 4 są traktowane jako tekst
-Console.WriteLine($"2 + {sa} + {b} = {2 + sa + b}");
-//kolejność ma znaczenie - najpierw sumowanie liczb całkowitych (int), a potem konkatenacja stringów
-Console.WriteLine($"2 + {a} + {sb} = {2 + a + sb}");
-
-//float - typ zmiennoprzecinkowy 32-bitowy, czyli liczby z częścią dziesiętną (z przecinkiem)
-//double - typ zmiennoprzecinkowy 64-bitowy, czyli liczby z częścią dziesiętną, ale o większej precyzji
-float fa = 11;
-float fb = 4.0f;
-
-float fc = fa + fb;
-Console.WriteLine($"{fa} + {fb} = {fc}");
-fc = fa - fb;
-Console.WriteLine($"{fa} - {fb} = {fc}");
-fc = fa * fb;
-Console.WriteLine($"{fa} * {fb} = {fc}");
-fc = fa / fb; //dzielenie zmiennoprzecinkowe, czyli wynik jest z częścią dziesiętną
-Console.WriteLine($"{fa} / {fb} = {fc}");
+intValue = (int)longValue; // rzutowanie jawne, pozwala nam na przypisanie wartości long do int
+Console.WriteLine(intValue);
 
 
-fc = a / b; //fc = 2
-Console.WriteLine($"{a} / {b} = {fc}");
+longValue = 345678908765434567L; // L na końcu oznacza, że to jest long
 
-fc = a / fb; //fc = 2.75
-Console.WriteLine($"{a} / {fb} = {fc}");
+intValue = (int)longValue;
+Console.WriteLine(longValue);
+Console.WriteLine(intValue);
 
-//aby wymusić wykonanie operacji dzielenia na floatach, musimy przynajmniej jedną z liczb "przekonwertować" na float
-//możemy tego dokonać korzystając z faktu, że wynik operacji między dwoma typami jest typu o większej prezycji oraz z kolejności działań
-fc = 1f * a / b;//fc = 2,75
-Console.WriteLine($"{a} / {b} = {fc}");
+Console.WriteLine("---");
+Console.WriteLine(int.MaxValue);
+longValue = int.MaxValue + 1L;
+intValue = (int)longValue;
+Console.WriteLine(longValue);
+Console.WriteLine(intValue);
 
-//lub przez rzutowanie jednej z liczb na float (czyli potraktowanie zmiennej jako inny typ)
-//w tym przypadku zmienna a jest rzutowana na float, więc wynik operacji będzie typu float
-fc = (float)a / b;
-Console.WriteLine($"{a} / {b} = {fc}");
-
-
-//koljeność działań zgodna z matematyką
-c = a + a * a;
-Console.WriteLine($"{a} + {a} * {a} = {c}"); //kolejność działań - najpierw mnożenie, potem dodawanie
-c = (a + a) * a;
-Console.WriteLine($"({a} + {a}) * {a} = {c}");
+Console.WriteLine("---");
+longValue = (long)int.MaxValue + int.MaxValue + 2;
+intValue = (int)longValue;
+Console.WriteLine(longValue);
+Console.WriteLine(intValue);
 
 
-Console.WriteLine($"byte min:{byte.MinValue} max: {byte.MaxValue}");
-Console.WriteLine($"ushot min:{ushort.MinValue} max: {ushort.MaxValue}");
-Console.WriteLine($"uint min:{uint.MinValue} max: {uint.MaxValue}");
-Console.WriteLine($"ulong min:{ulong.MinValue} max: {ulong.MaxValue}");
+Console.WriteLine("---");
+float floatValue = 4.5f;
+double doubleValue = floatValue;
+Console.WriteLine(doubleValue);
 
-Console.WriteLine($"short min:{short.MinValue} max: {short.MaxValue}");
-Console.WriteLine($"int min:{int.MinValue} max: {int.MaxValue}");
-Console.WriteLine($"long min:{long.MinValue} max: {long.MaxValue}");
+doubleValue = 0.33333333333333;
+floatValue = (float)doubleValue;
+Console.WriteLine(doubleValue);
+Console.WriteLine(floatValue);
 
-
-Console.WriteLine($"float min:{float.MinValue} max: {float.MaxValue}");
-Console.WriteLine($"double min:{double.MinValue} max: {double.MaxValue}");
-Console.WriteLine($"decimal min:{decimal.MinValue} max: {decimal.MaxValue}");
-
-Console.WriteLine((float)long.MaxValue);
-Console.WriteLine((double)long.MaxValue);
-Console.WriteLine((decimal)long.MaxValue);
-Console.WriteLine(decimal.MaxValue / 10m - 0.1m);
-
-Console.WriteLine(5 / 3.3f); //f - float
-Console.WriteLine(5 / 3.3d); //d - double (domyślnie jeśli nie podamy sufiksu np. 3.3)
-Console.WriteLine(5 / 3.3m); //m - decimal
-
-//Math - klasa statyczna, która zawiera metody matematyczne i stałe jak np. PI
-double result = Math.Pow(3, 5f);
-
-//domyślne zachowanie funkcji zaokrąglającej powoduje zaokrąglanie do wartości parzystej - Banker's Rounding
-Console.WriteLine(Math.Round(2.5));
-Console.WriteLine(Math.Round(3.5));
-
-//Conventional Rounding
-Console.WriteLine(Math.Round(2.5, MidpointRounding.AwayFromZero));
-Console.WriteLine(Math.Round(3.5, MidpointRounding.AwayFromZero));
-
-Console.WriteLine(Math.Round(3.52250, 3));
-Console.WriteLine(Math.Round(3.52250, 3, MidpointRounding.AwayFromZero));
+doubleValue = double.MaxValue;
+floatValue = (float)doubleValue;
+Console.WriteLine(doubleValue);
+Console.WriteLine(floatValue);
 
 
+float a = 3.3333333f;
 
-Console.WriteLine("Podaj pierwszy bok prostokąta:");
-string sizeA = Console.ReadLine();
-Console.WriteLine("Podaj drugi bok prostokąta:");
-string sizeB = Console.ReadLine();
-
-
-float floatSizeA = float.Parse(sizeA); //konwersja string na float
-float floatSizeB = float.Parse(sizeB);
-Console.WriteLine($"Pole prostokąta to {floatSizeA * floatSizeB}");
-
-int intSizeA = int.Parse(sizeA);
-int intSizeB = int.Parse(sizeB);
-Console.WriteLine($"Pole prostokąta to {intSizeA * intSizeB}");
-
-
-float number = 9.12345f;
-double roundedNumber = Math.Round(number, 2);
-
-string roundedNumberString = roundedNumber.ToString(); //formatowanie liczby zmiennoprzecinkowej do stringa z dwoma miejscami po przecinku
-Console.WriteLine(roundedNumberString);
-
-//metoda ToString() - konwertuje liczbę na stringa i przyjmuje jako argument format
-//formaty:
-//f - format liczby zmiennoprzecinkowej
-//0 - placeholder dla cyfry, jeśli liczba jest mniejsza niż 1 to zostanie dodane 0 przed przecinkiem
-//# - opcjonalny placeholder dla cyfry, jeśli liczba jest mniejsza niż 1 to nie zostanie dodane 0 przed przecinkiem
-//. - separator dziesiętny
-//, - separator tysięcy
-
-
-Console.WriteLine(number.ToString("f3"));   //liczba z trzema miejscami po przecinku
-Console.WriteLine(number.ToString("f2"));   //liczba z dwoma miejscami po przecinku
-
-Console.WriteLine(number.ToString("0.00")); 
-Console.WriteLine(number.ToString("00.00"));
-
-Console.WriteLine(number.ToString("0.00#######"));
-Console.WriteLine(number.ToString("0.000000000"));
-
-number = 123123123;
-Console.WriteLine(number.ToString("### ### ###")); //separatorem jest spacja
-Console.WriteLine(number.ToString("###,###,###")); //separatorem jest ustawienie z kultury (np. przecinek w USA, spacja w Polsce)
-
-//to samo można zrobić z interpolacją stringów
-Console.WriteLine($"{number:f2}");
-Console.WriteLine($"{number:0.00}");
-Console.WriteLine($"{2:0.00}");
-Console.WriteLine($"{number:0.##}");
-Console.WriteLine($"{2:0.##}");
-Console.WriteLine($"{2:0.0#}");
-
-number = 1f / 3;
-Console.WriteLine(number.ToString("0#.00")); //liczba z zerem wiodącym i dwoma miejscami po przecinku (twardymni)
-Console.WriteLine($"{number:0#.##}"); //liczba z zerem wiodącym i dwoma miejscami po przecinku (miękkimni)
+a = (float)Math.Pow(a, 2);
+Console.WriteLine(a);
