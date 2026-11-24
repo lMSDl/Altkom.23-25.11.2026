@@ -38,6 +38,48 @@ public class Person
         //this.name = name; //jeśli pole nazywa się tak samo jak parametr metody, to musimy użyć this aby je rozróżnić (this.name oznacza pole klasy, a name oznacza parametr metody)
         _name = name.ToUpper(); //przykład "obróbki danych": przypisujemy wartość parametru name do pola _name, ale najpierw zamieniamy ją na wielkie litery
     }
+
+    //Property - właściwość - pole z automatycznym generowaniem getterów i setterów
+
+    //auto-property - właściwość automatyczna - pole jest generowane automatycznie przez kompilator
+    //jest możliwość ograniczenia modyfikatora dostępu dla getter lub setter (osobno)
+    public string LastName { /*private*/ get;  set; }
+
+
+    private int _age; //backfield do full-property - pozwala na dodatkowy kod w setterze i getterze
+
+    //full-property - właściwość pełna - pole jest tworzone przez programistę, a getter i setter są jawne i można je modyfikować
+    public int Age
+    {
+        get
+        {
+            return _age; //zwracamy wartość pola _age
+        }
+
+        set
+        {
+            if (value < 0)
+                _age = 0;
+            else
+                _age = value; //value - domyślna nazwa parametru w setterze property
+        }
+    }
+
+
+    public long PESEL
+
+    {
+        get
+        {
+            return field; //field - domyślna nazwa pola w full-property
+        }
+
+        set
+        {
+            field = value; //value - domyślna nazwa parametru w setterze property
+        }
+
+    }
 }
 
 

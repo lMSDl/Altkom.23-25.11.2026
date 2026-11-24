@@ -27,3 +27,7 @@ Console.WriteLine(person.GetType().FullName);
 person.SetName("Jan");
 
 Console.WriteLine(person.GetName());
+
+person.LastName = "Kowalski";
+
+Console.WriteLine(person.LastName);
