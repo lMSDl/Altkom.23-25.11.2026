@@ -455,5 +455,32 @@
             array[3] = 25;
             Console.WriteLine($"{array[0]} {array[1]} {array[2]} {array[3]} {array[4]}");
         }
+
+        public static void Split()
+        {
+
+
+
+            Console.WriteLine("Napisz coś:");
+            string input = Console.ReadLine();
+
+            //split - dzieli łańcuch na tablicę stringów, jeśli nie poda się argumentu, domyślnie dzieli po spacji
+            string[] splittedInput = input.Split();
+
+            Console.WriteLine($"Napisałeś {splittedInput.Length} słów");
+
+            Console.WriteLine(splittedInput[2]);
+
+            Array.Sort(splittedInput);
+
+
+            Console.WriteLine(splittedInput[2]);
+
+
+            //split przyjmuje jako argument string, po którym ma dzielić. Jeśli nie podamy argumentu, domyślnie dzieli po spacji
+            splittedInput = input.Split("a");
+
+            Console.WriteLine($"Napisałeś {splittedInput.Length} słów");
+        }
     }
 }
