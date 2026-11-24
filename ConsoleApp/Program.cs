@@ -11,66 +11,48 @@
 //Subjects.Switch();
 //Subjects.While();
 //Subjects.DoWhile();
-
-
-
-//for(I; II; IV )
-//   { III; }
-
-//I - inicjalizacja pętli - wykonuje się tylko raz na początku
-//II - warunek kontynuacji pętli - wykonuje się przed każdym wykonaniem ciała
-//III - ciało pętli
-//IV - akcja po wykonaniu ciała - najczęściej inkrementacja licznika
-
-for (int i = 0; i < 5; i++)
-{
-    Console.WriteLine(i);
-}
-Console.WriteLine("---");
-
-int value = 5;
-
-for (; value > 0; value--)
-{
-    Console.WriteLine(value);
-}
-Console.WriteLine("---");
-
-
-value = 0;
-
-for (; value < 5;)
-{
-    Console.WriteLine(value++); //pobranie wartości i inkrementacja
-}
-Console.WriteLine("---");
-
-value = 0;
-
-for (; value < 5;)
-{
-    Console.WriteLine(++value); //inkrementacja i pobranie wartości
-}
-
-//przykład nieskończonej pętli for
-/*for(; ; )
-{
-       Console.WriteLine("Infinite loop");
-}*/
+//Subjects.For();
 
 
 
 Console.WriteLine("Napisz coś:");
-
 string? input = Console.ReadLine();
 string[] splitterInput = input.Split();
 
-for(int i = 0; i < splitterInput.Length; i++)
+
+//foreach zastępuje poniższy sposób iteracji po tablicy
+for (int i = 0; i < splitterInput.Length; i++)
 {
-    Console.WriteLine($"Element {i}: {splitterInput[i]}");
+    string word = splitterInput[i];
+
+    /*if(Random.Shared.Next(1, 10) % 2 == 0)
+    {
+        i--;
+    }*/
+    Console.WriteLine($"Element: {word}");
 }
 
-for (int i = 0; i < splitterInput.Length; i += 2)
+
+//foreach - pozwala przejsc po wszystkich elementach tablicy
+foreach (string word in splitterInput)
 {
-    Console.WriteLine($"Element {i}: {splitterInput[i]}");
+    Console.WriteLine($"Element: {word}");
+}
+
+
+//za pomocą for mamy dostęp do indeksu elementu
+//i możemy zmieniać jego wartość w tablicy
+for (int i = 0; i < splitterInput.Length; i++)
+{
+    if (splitterInput[i] == "ala")
+        splitterInput[i] = "kot";
+
+    Console.WriteLine(splitterInput[i]);
+}
+
+//foreach - pozwala wykonać jakąś operację na każdym elemencie tablicy
+//jednak za jego pomocą nie możemy zmieniać elementów tablicy
+foreach (string word in splitterInput)
+{
+    Console.WriteLine(word);
 }
