@@ -25,9 +25,20 @@ Console.WriteLine(person.GetType().Namespace);
 Console.WriteLine(person.GetType().FullName);
 
 person.SetName("Jan");
-
 Console.WriteLine(person.GetName());
 
 person.LastName = "Kowalski";
-
 Console.WriteLine(person.LastName);
+
+person.Age = 65;
+Console.WriteLine(person.Age);
+
+Console.WriteLine(person.GenerateBio());
+
+
+//person.LastName = person.ToTitleCase("NoWAk");
+
+Console.WriteLine(person.GenerateBio());
+
+person.ChangeNamesToTitleCase();
+Console.WriteLine(person.GenerateBio());

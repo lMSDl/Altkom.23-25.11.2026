@@ -80,6 +80,32 @@ public class Person
         }
 
     }
+
+    //<modyfikator dostępu> <typ zwracany> <nazwa metody>()
+    //metody mogą zwracać rezultat swojej pracy (typ zwracany), mogą przyjmować parametry (argumenty)
+    public string GenerateBio()
+    {
+        string bio = $"Name: {GetName()}, Last Name: {LastName}, Age: {Age}";
+        return bio;
+    }
+
+    //metody void nie zwracają niczego, a ich zadaniem jest wykonanie jakiejś operacji na składnikach klasy
+    public void ChangeNamesToTitleCase()
+    {
+        // _name = _name.Substring(0, 1).ToUpper() + _name.Substring(1).ToLower();
+        // LastName = LastName.Substring(0, 1).ToUpper() + LastName.Substring(1).ToLower();
+
+
+        _name = ToTitleCase(_name);
+        LastName = ToTitleCase(LastName);
+    }
+
+    //metody prywatne są dostępne tylko w obrębie danej klasy
+    //prywatne metody są wykorzystywane do realizacji zadań pomocniczych i uniknięcia powtórzeń kodu
+    private string ToTitleCase(string text)
+    {
+        return text.Substring(0, 1).ToUpper() + text.Substring(1).ToLower();
+    }
 }
 
 
