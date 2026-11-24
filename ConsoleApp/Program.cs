@@ -64,3 +64,28 @@ sides[1] = float.Parse(inputs[1]);
 
 
 Console.WriteLine($"Pole prostokąta to {sides[0] * sides[1]}");
+
+
+
+array[0] = 31;
+array[1] = 2;
+array[2] = 15;
+Console.WriteLine($"{array[0]} {array[1]} {array[2]}");
+
+//Array - klasa statyczna, która zawiera metody do pracy z tablicami
+Array.Sort(array); //sortowanie tablicy rosnąco
+Console.WriteLine($"{array[0]} {array[1]} {array[2]}");
+
+Array.Reverse(array); //odwracanie tablicy
+Console.WriteLine($"{array[0]} {array[1]} {array[2]}");
+
+Array.Fill(array, -1); //wypełnianie tablicy wartością -1
+Console.WriteLine($"{array[0]} {array[1]} {array[2]}");
+
+Array.Fill(array, default); //wypełnianie tablicy wartością domyślną (0)
+Console.WriteLine($"{array[0]} {array[1]} {array[2]}");
+
+Array.Resize(ref array, 5); //zmiana rozmiaru tablicy na 5
+array[4] = 20;
+array[3] = 25;
+Console.WriteLine($"{array[0]} {array[1]} {array[2]} {array[3]} {array[4]}");
