@@ -9,62 +9,57 @@
 //Subjects.Split();
 
 
+Console.WriteLine("Podaj bok kwadratu:");
+string input = Console.ReadLine();
 
-//tworzmy nowa listę stringów. Lista po initializacji jest pusta
-//lista wykorzystuje parametry generyczne, czyli możemy określić typ danych, które będą w tej liście
-List<string> listOfStrings = new List<string>();
+int side = int.Parse(input);
 
-//Inne sposoby inicjalizacji listy
-//List<string> listOfStrings = new(); //skrócony sposób inicjalizacji bez potrzeby podawania typów (typ określany jest na podstawie deklaracji)
-//List<string> listOfStrings = []; // utworzenie pustej listy stringów z zastosowaniem inicjalizatora kolekcji
-
-
-Console.WriteLine("Liczba elementów na liście: " + listOfStrings.Count);
-
-//dodajemy elementy do listy co spowoduje zwiększenie jej rozmiaru
-listOfStrings.Add("Ala");
-listOfStrings.Add("ma");
-listOfStrings.Add("kota");
-
-Console.WriteLine("Liczba elementów na liście: " + listOfStrings.Count);
-
-//indekser działa podobnie jak w tablicach
-Console.WriteLine(listOfStrings[0]);
-
-listOfStrings[0] = "Marysia";
-Console.WriteLine(listOfStrings[0]);
-
-
-listOfStrings.Insert(2, "burego");//dodanie elementu na wskazaną pozycję - pozostałe elementy są przesuwane
+//instrukcje warunkow - if, else
+//If sprawdza warunek w nawiasie (wynikiem operacji musi być bool) i jeśli jest prawdziwy to wykonuje blok kodu w klamrach
+//klamry + kod między klamrami to tak zwany "blok kodu" lub ciało funkcji / instukcji
+if (side > 0)
+{
+    int area = side * side;
+    Console.WriteLine($"Pole kwadratu o boku {side} wynosi: {area}");
+}
+//jeśli poprzedni warunek nie został spełniony to sprawdzamy kolejny warunek
+//else if - sprawdza kolejny warunek, jeśli poprzedni nie został spełniony i może występować wiele razy
+else if (side == 0)
+{
+    Console.WriteLine("Kwadrat nie istnieje");
+}
+//else - wykonuje blok kodu w przypadku, gdy nie wykona się żaden if
+else
+{
+    Console.WriteLine("Bok kwadratu nie może być ujemy");
+}
+//jeżeli używany else, to tylko jeden blok kodu zostanie wykonany i sprawdzanie warunków zakończy się w przypadku wejścia w któryś z bloków
 
 
-Console.WriteLine("Liczba elementów na liście: " + listOfStrings.Count);
-Console.WriteLine($"{listOfStrings[0]} {listOfStrings[1]} {listOfStrings[2]} {listOfStrings[3]}");
+//jeżeli nie używany else, to każdy if będzie traktowany osobno i warunek będzie sprawdzany niezależnie
+//wniosek: else jest "łącznikiem" między kolejnymi if'ami
+if (side > 0)
+{
+    Console.WriteLine($"Kwadrat ma bok większ niż 0");
+}
+
+if(side > 5)
+{
+    Console.WriteLine($"Kwadrat ma bok większ niż 5");
+}
 
 
-listOfStrings.Insert(0, "!");
-listOfStrings.Insert(3, "!");
-listOfStrings.Add("!");
-
-Console.WriteLine("Liczba elementów na liście: " + listOfStrings.Count);
-
-//usuwanie elementu z listy z wykorzystaniem indeksu
-listOfStrings.RemoveAt(3);
 
 
-//usuwanie elementu z listy z wykorzystaniem wartości
-listOfStrings.Remove("burego");
+bool result;
+result = side == 0; // == - porównanie
+result = side != 0; // != - różne od / nierówność
+result = !(side == 0); // ! - negacja - odwrócenie wartości logicznej
+result = side > 0; // > - większe od
+result = side < 0; // < - mniejsze od
+result = side >= 0; // >= - większe lub równe
+result = side <= 0; // <= - mniejsze lub równe
 
-//jeśli jest kilka takich samych elementów to usunięty zostanie tylko pierwszy
-listOfStrings.Remove("!");
+result = side == 0 || side > 0; // || - lub logiczne (OR) - sprawdza czy przynajmniej jeden warunek jest prawdziwy
+result = side < 10 && side >= 0; // && - i logiczne (AND) - sprawdza czy oba warunki są prawdziwe
 
-Console.WriteLine("Liczba elementów na liście: " + listOfStrings.Count);
-
-
-int indexOfCat = listOfStrings.IndexOf("kota"); //zwraca indeks pierwszego wystąpienia elementu na liście
-
-Console.WriteLine(listOfStrings[indexOfCat]);
-
-//jeśli nie ma takiego elementu to zwraca -1
-indexOfCat = listOfStrings.IndexOf("kot");
-Console.WriteLine(indexOfCat);
