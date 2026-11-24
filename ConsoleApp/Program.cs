@@ -1,5 +1,5 @@
 ﻿using ConsoleApp;
-
+using Models;
 
 //Subjects.Introduction();
 //Subjects.Strings();
@@ -13,41 +13,13 @@
 //Subjects.DoWhile();
 //Subjects.For();
 //Subjects.Foreach();
+//Subjects.JumpStatemensts();
 
 
+//Person to nasza klasa zdefiniowana w Models/Person.cs
+//używamy using Models, aby uniknąć wpisywania pełnej nazwy przestrzeni nazw za każdym razem
+Person person = new Person();
 
-Console.WriteLine("Podaj liczby rozdzielając je spacją:");
-string input = Console.ReadLine();
-
-
-List<int> ints = new List<int>();
-
-string[] splittedInput = input.Split();
-foreach (string number in splittedInput)
-{
-    //int result;
-    if (int.TryParse(number, out int result)) //deklaracja podczas przekazywania parametru wyjściowego
-    {
-        ints.Add(result);
-    }
-}
-
-
-int accumulator = 0;
-for (int counter = 0; counter < ints.Count; counter++)
-{
-    int value = ints[counter];
-
-    if (value % 2 != 0)
-    {
-        continue; //przerywa aktualną iterację i przeskakuje do następnej iteracji pętli
-    }
-
-    accumulator += value;
-
-    if (accumulator >= 100)
-    {
-        Console.WriteLine($"Wykorzystano {counter + 1} wartości by osiągnąć wynik 100");
-        break; //przerywa działanie pętli
-    }
-}
+Console.WriteLine(person.GetType().Name);
+Console.WriteLine(person.GetType().Namespace);
+Console.WriteLine(person.GetType().FullName);
