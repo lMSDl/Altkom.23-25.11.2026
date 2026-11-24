@@ -9,71 +9,99 @@
 //Subjects.Split();
 
 
-Console.WriteLine("Podaj bok kwadratu:");
-string input = Console.ReadLine();
 
-int side;
-//int.TryParse - próbuje przekonwertować stringa na int'a
-//jeżeli się uda to zwraca true i przypisuje wartość do zmiennej out (w naszym przypadku side)
-//jeżeli się nie uda to zwraca false i zmienna out ma wartość domyślną
-//parametr out nie musi być zainicjalizowany przed wywołaniem metody i jest nazywany "parametrem wyjściowym"
-bool success = int.TryParse(input, out side);
 
-//if (!success)
-//if (success == false)
-if (success != true)
+string[] inputs = new string[3];
+Console.WriteLine("Podaj wartość A:");
+inputs[0] = Console.ReadLine();
+Console.WriteLine("Podaj wartość B:");
+inputs[1] = Console.ReadLine();
+Console.WriteLine("Podaj znak operacji:");
+inputs[2] = Console.ReadLine();
+
+float[] values = new float[2];
+bool[] canParse = new bool[2];
+
+canParse[0] = float.TryParse(inputs[0], out values[0]);
+canParse[1] = float.TryParse(inputs[1], out values[1]);
+
+if (!canParse[0] || !canParse[1])
 {
-    Console.WriteLine("Nieprawidłowa wartość");
+    Console.WriteLine("Nieprawidłowe wartości");
 }
 else
 {
+    double result = 0;
 
-    //instrukcje warunkow - if, else
-    //If sprawdza warunek w nawiasie (wynikiem operacji musi być bool) i jeśli jest prawdziwy to wykonuje blok kodu w klamrach
-    //klamry + kod między klamrami to tak zwany "blok kodu" lub ciało funkcji / instukcji
-    if (side > 0)
+    //switch - instrukcja warunkowa, która sprawdza wartość zmiennej (inputs[2]) i wykonuje odpowiedni blok kodu
+    //case - blok kodu, który zostanie wykonany, jeżeli zmienna w switchu będzie miała wartość podaną w case
+    //default - blok kodu, który zostanie wykonany, jeżeli żaden z case'ów nie będzie spełniony (odpowiednik else)
+    //break - kończy działanie bloku kodu w case. Każdy case MUSI kończyć się break
+    //wiele case'ów może prowadzić do jednego bloku kodu, ale nie można mieć dwóch takich samych case'ów
+    switch (inputs[2])
     {
-        int area = side * side;
-        Console.WriteLine($"Pole kwadratu o boku {side} wynosi: {area}");
+        case "+":
+            result = values[0] + values[1];
+            break;
+        case "-":
+            result = values[0] - values[1];
+            break;
+        case "*":
+            result = values[0] * values[1];
+            break;
+        case "/":
+            result = values[0] / values[1];
+            break;
+        case "sqrt":
+            result = Math.Sqrt(values[0]);
+            break;
+        case "^":
+        case "pow":
+            result = Math.Pow(values[0], values[1]);
+            break;
+        case "log":
+            result = Math.Log(values[0], values[1]);
+            break;
+        default:
+            Console.WriteLine("Nieprawidłowy znak operacji");
+            return; //kończy działanie metody, w której się znajdujemy
     }
-    //jeśli poprzedni warunek nie został spełniony to sprawdzamy kolejny warunek
-    //else if - sprawdza kolejny warunek, jeśli poprzedni nie został spełniony i może występować wiele razy
-    else if (side == 0)
+
+    /*if (inputs[2] == "+")
     {
-        Console.WriteLine("Kwadrat nie istnieje");
+        result = values[0] + values[1];
     }
-    //else - wykonuje blok kodu w przypadku, gdy nie wykona się żaden if
+    else if (inputs[2] == "-")
+    {
+        result = values[0] - values[1];
+    }
+    else if (inputs[2] == "*")
+    {
+        result = values[0] * values[1];
+    }
+    else if (inputs[2] == "/")
+    {
+        result = values[0] / values[1];
+    }
+    else if (inputs[2] == "sqrt")
+    {
+        result = Math.Sqrt(values[0]);
+    }
+    else if (inputs[2] == "^" || inputs[2] == "pow")
+    {
+        result = Math.Pow(values[0], values[1]);
+    }
+    else if (inputs[2] == "log")
+    {
+        result = Math.Log(values[0], values[1]);
+    }
     else
     {
-        Console.WriteLine("Bok kwadratu nie może być ujemy");
-    }
-    //jeżeli używany else, to tylko jeden blok kodu zostanie wykonany i sprawdzanie warunków zakończy się w przypadku wejścia w któryś z bloków
+        Console.WriteLine("Nieprawidłowy znak operacji");
+        return; //kończy działanie metody, w której się znajdujemy
+    }*/
 
 
-    //jeżeli nie używany else, to każdy if będzie traktowany osobno i warunek będzie sprawdzany niezależnie
-    //wniosek: else jest "łącznikiem" między kolejnymi if'ami
-    if (side > 0)
-    {
-        Console.WriteLine($"Kwadrat ma bok większ niż 0");
-    }
-
-    if (side > 5)
-    {
-        Console.WriteLine($"Kwadrat ma bok większ niż 5");
-    }
-
-
+    Console.WriteLine($"Wynik: {result}");
 }
-
-bool result;
-result = side == 0; // == - porównanie
-result = side != 0; // != - różne od / nierówność
-result = !(side == 0); // ! - negacja - odwrócenie wartości logicznej
-result = side > 0; // > - większe od
-result = side < 0; // < - mniejsze od
-result = side >= 0; // >= - większe lub równe
-result = side <= 0; // <= - mniejsze lub równe
-
-result = side == 0 || side > 0; // || - lub logiczne (OR) - sprawdza czy przynajmniej jeden warunek jest prawdziwy
-result = side < 10 && side >= 0; // && - i logiczne (AND) - sprawdza czy oba warunki są prawdziwe
 
