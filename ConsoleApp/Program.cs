@@ -23,3 +23,7 @@ Person person = new Person();
 Console.WriteLine(person.GetType().Name);
 Console.WriteLine(person.GetType().Namespace);
 Console.WriteLine(person.GetType().FullName);
+
+person.SetName("Jan");
+
+Console.WriteLine(person.GetName());
