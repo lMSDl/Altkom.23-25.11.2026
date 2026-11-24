@@ -10,64 +10,67 @@
 //Subjects.IfElse();
 //Subjects.Switch();
 //Subjects.While();
+//Subjects.DoWhile();
 
 
 
+//for(I; II; IV )
+//   { III; }
 
-bool isRunning;
-int counter = 0;
+//I - inicjalizacja pętli - wykonuje się tylko raz na początku
+//II - warunek kontynuacji pętli - wykonuje się przed każdym wykonaniem ciała
+//III - ciało pętli
+//IV - akcja po wykonaniu ciała - najczęściej inkrementacja licznika
 
-//do-while - sprawdza warunek po wykonaniu ciała - zapewnia, że zostanie ono wykonane co najmniej raz
-//pozwala to wyeliminować inicjalizację zminnych sterujących pętą przed wejściem do pętli
-do
+for (int i = 0; i < 5; i++)
 {
-    isRunning = true; // Inicjalizacja zmiennej sterującej pętlą
-    Console.Clear();
-    Console.WriteLine("1. Introduction\n2. Strings\n3. Numbers\n4. Casting\n5. Arrays\n6. Lists\n7. If-Else\n8. Switch\n9. Exit");
-    Console.WriteLine("Wybierz opcję (1-9):");
+    Console.WriteLine(i);
+}
+Console.WriteLine("---");
 
-    counter = counter + 1; // Zwiększenie licznika przy każdym przebiegu pętli
-    //counter += 1; // Alternatywna forma zwiększenia licznika
-    //counter++; // Jeszcze inna forma zwiększenia licznika
+int value = 5;
 
-    string input = Console.ReadLine();
-    switch (input)
-    {
-        case "1":
-            Subjects.Introduction();
-            break;
-        case "2":
-            Subjects.Strings();
-            break;
-        case "3":
-            Subjects.Numbers();
-            break;
-        case "4":
-            Subjects.Casting();
-            break;
-        case "5":
-            Subjects.Arrays();
-            break;
-        case "6":
-            Subjects.Split();
-            break;
-        case "7":
-            Subjects.IfElse();
-            break;
-        case "8":
-            Subjects.Switch();
-            break;
-        case "9":
-            //ustawiamy parametr pętli na false, aby zakończyć jej działanie
-            isRunning = false;
-            break;
-        //alternatywnie można użyć return; aby zakończyć działanie programu
-        //return;
-        default:
-            Console.WriteLine("Nieprawidłowy wybór. Proszę spróbować ponownie.");
-            break;
-    } 
+for (; value > 0; value--)
+{
+    Console.WriteLine(value);
+}
+Console.WriteLine("---");
 
-    Console.WriteLine("Naciśnij dowolny klawisz, aby kontynuować...");
-    Console.ReadKey();
-} while (isRunning && counter < 3);
+
+value = 0;
+
+for (; value < 5;)
+{
+    Console.WriteLine(value++); //pobranie wartości i inkrementacja
+}
+Console.WriteLine("---");
+
+value = 0;
+
+for (; value < 5;)
+{
+    Console.WriteLine(++value); //inkrementacja i pobranie wartości
+}
+
+//przykład nieskończonej pętli for
+/*for(; ; )
+{
+       Console.WriteLine("Infinite loop");
+}*/
+
+
+
+Console.WriteLine("Napisz coś:");
+
+string? input = Console.ReadLine();
+string[] splitterInput = input.Split();
+
+for(int i = 0; i < splitterInput.Length; i++)
+{
+    Console.WriteLine($"Element {i}: {splitterInput[i]}");
+}
+
+for (int i = 0; i < splitterInput.Length; i += 2)
+{
+    Console.WriteLine($"Element {i}: {splitterInput[i]}");
+}
