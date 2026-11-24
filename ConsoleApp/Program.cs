@@ -4,57 +4,63 @@
 //Subjects.Introduction();
 //Subjects.Strings();
 //Subjects.Numbers();
-
-int intValue = 5;
-long longValue = intValue;
-
-Console.WriteLine(longValue);
+//Subjects.Casting();
 
 
-//błąd kompilacji, ponieważ zakres intValue jest mniejszy niż longValue
-//intValue = longValue;
 
-intValue = (int)longValue; // rzutowanie jawne, pozwala nam na przypisanie wartości long do int
-Console.WriteLine(intValue);
-
-
-longValue = 345678908765434567L; // L na końcu oznacza, że to jest long
-
-intValue = (int)longValue;
-Console.WriteLine(longValue);
-Console.WriteLine(intValue);
-
-Console.WriteLine("---");
-Console.WriteLine(int.MaxValue);
-longValue = int.MaxValue + 1L;
-intValue = (int)longValue;
-Console.WriteLine(longValue);
-Console.WriteLine(intValue);
-
-Console.WriteLine("---");
-longValue = (long)int.MaxValue + int.MaxValue + 2;
-intValue = (int)longValue;
-Console.WriteLine(longValue);
-Console.WriteLine(intValue);
+int a = 5;
+int b = 10;
+int c = 15;
 
 
-Console.WriteLine("---");
-float floatValue = 4.5f;
-double doubleValue = floatValue;
-Console.WriteLine(doubleValue);
+//deklaracja tablicy przechowującej dane typu int
+//[] - oznacza tablicę
+int[] array;
 
-doubleValue = 0.33333333333333;
-floatValue = (float)doubleValue;
-Console.WriteLine(doubleValue);
-Console.WriteLine(floatValue);
-
-doubleValue = double.MaxValue;
-floatValue = (float)doubleValue;
-Console.WriteLine(doubleValue);
-Console.WriteLine(floatValue);
+//inicjalizacja tablicy o rozmiarze 3
+//new - słowo kluczowe do tworzenia nowych obiektów
+//tablica jest wypełniona domyślnymi wartościami, czyli dla int jest to 0
+array = new int[3];
 
 
-float a = 3.3333333f;
+//odwołujemy się do elementów tablicy za pomocą indeksów
+//indeksy zaczynają się od 0, więc pierwszy element ma indeks 0
+Console.WriteLine(array[0]);
+Console.WriteLine(array[1]);
+Console.WriteLine(array[array.Length - 1]); //wyświetlamy ostatni element tablicy (pod indeksem: długość-1)
 
-a = (float)Math.Pow(a, 2);
-Console.WriteLine(a);
+//odwołując się do indeksu, który nie istnieje, otrzymamy błąd
+//Console.WriteLine(array[4]);
+
+//zmiana wartości elementu tablicy
+array[0] = 1;
+array[1] = b;
+array[2] = c;
+
+b = 7; //modyfikujemy zmienną b, ale nie zmienia to wartości w tablicy, ponieważ tablica przyjmuje wartość b, a nie odniesienie do zmiennej b
+Console.WriteLine(array[0]);
+Console.WriteLine(array[1]);
+Console.WriteLine(array[2]);
+Console.WriteLine(b);
+
+
+Console.WriteLine($"Tablica ma rozmiar {array.Length}");
+
+
+string text = "Hello, World!"; //string jest tablicą znaków (char)
+Console.WriteLine(text[4]);
+
+
+string[] inputs = new string[2];
+Console.WriteLine("Podaj pierwszy bok prostokąta:");
+inputs[0] = Console.ReadLine();
+Console.WriteLine("Podaj drugi bok prostokąta:");
+inputs[1] = Console.ReadLine();
+
+
+float[] sides = new float[inputs.Length];
+sides[0] = float.Parse(inputs[0]);
+sides[1] = float.Parse(inputs[1]);
+
+
+Console.WriteLine($"Pole prostokąta to {sides[0] * sides[1]}");
