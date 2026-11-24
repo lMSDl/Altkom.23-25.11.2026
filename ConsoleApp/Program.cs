@@ -12,44 +12,58 @@
 Console.WriteLine("Podaj bok kwadratu:");
 string input = Console.ReadLine();
 
-int side = int.Parse(input);
+int side;
+//int.TryParse - próbuje przekonwertować stringa na int'a
+//jeżeli się uda to zwraca true i przypisuje wartość do zmiennej out (w naszym przypadku side)
+//jeżeli się nie uda to zwraca false i zmienna out ma wartość domyślną
+//parametr out nie musi być zainicjalizowany przed wywołaniem metody i jest nazywany "parametrem wyjściowym"
+bool success = int.TryParse(input, out side);
 
-//instrukcje warunkow - if, else
-//If sprawdza warunek w nawiasie (wynikiem operacji musi być bool) i jeśli jest prawdziwy to wykonuje blok kodu w klamrach
-//klamry + kod między klamrami to tak zwany "blok kodu" lub ciało funkcji / instukcji
-if (side > 0)
+//if (!success)
+//if (success == false)
+if (success != true)
 {
-    int area = side * side;
-    Console.WriteLine($"Pole kwadratu o boku {side} wynosi: {area}");
+    Console.WriteLine("Nieprawidłowa wartość");
 }
-//jeśli poprzedni warunek nie został spełniony to sprawdzamy kolejny warunek
-//else if - sprawdza kolejny warunek, jeśli poprzedni nie został spełniony i może występować wiele razy
-else if (side == 0)
-{
-    Console.WriteLine("Kwadrat nie istnieje");
-}
-//else - wykonuje blok kodu w przypadku, gdy nie wykona się żaden if
 else
 {
-    Console.WriteLine("Bok kwadratu nie może być ujemy");
+
+    //instrukcje warunkow - if, else
+    //If sprawdza warunek w nawiasie (wynikiem operacji musi być bool) i jeśli jest prawdziwy to wykonuje blok kodu w klamrach
+    //klamry + kod między klamrami to tak zwany "blok kodu" lub ciało funkcji / instukcji
+    if (side > 0)
+    {
+        int area = side * side;
+        Console.WriteLine($"Pole kwadratu o boku {side} wynosi: {area}");
+    }
+    //jeśli poprzedni warunek nie został spełniony to sprawdzamy kolejny warunek
+    //else if - sprawdza kolejny warunek, jeśli poprzedni nie został spełniony i może występować wiele razy
+    else if (side == 0)
+    {
+        Console.WriteLine("Kwadrat nie istnieje");
+    }
+    //else - wykonuje blok kodu w przypadku, gdy nie wykona się żaden if
+    else
+    {
+        Console.WriteLine("Bok kwadratu nie może być ujemy");
+    }
+    //jeżeli używany else, to tylko jeden blok kodu zostanie wykonany i sprawdzanie warunków zakończy się w przypadku wejścia w któryś z bloków
+
+
+    //jeżeli nie używany else, to każdy if będzie traktowany osobno i warunek będzie sprawdzany niezależnie
+    //wniosek: else jest "łącznikiem" między kolejnymi if'ami
+    if (side > 0)
+    {
+        Console.WriteLine($"Kwadrat ma bok większ niż 0");
+    }
+
+    if (side > 5)
+    {
+        Console.WriteLine($"Kwadrat ma bok większ niż 5");
+    }
+
+
 }
-//jeżeli używany else, to tylko jeden blok kodu zostanie wykonany i sprawdzanie warunków zakończy się w przypadku wejścia w któryś z bloków
-
-
-//jeżeli nie używany else, to każdy if będzie traktowany osobno i warunek będzie sprawdzany niezależnie
-//wniosek: else jest "łącznikiem" między kolejnymi if'ami
-if (side > 0)
-{
-    Console.WriteLine($"Kwadrat ma bok większ niż 0");
-}
-
-if(side > 5)
-{
-    Console.WriteLine($"Kwadrat ma bok większ niż 5");
-}
-
-
-
 
 bool result;
 result = side == 0; // == - porównanie
