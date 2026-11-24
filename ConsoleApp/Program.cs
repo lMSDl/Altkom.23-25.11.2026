@@ -12,47 +12,42 @@
 //Subjects.While();
 //Subjects.DoWhile();
 //Subjects.For();
+//Subjects.Foreach();
 
 
 
-Console.WriteLine("Napisz coś:");
-string? input = Console.ReadLine();
-string[] splitterInput = input.Split();
+Console.WriteLine("Podaj liczby rozdzielając je spacją:");
+string input = Console.ReadLine();
 
 
-//foreach zastępuje poniższy sposób iteracji po tablicy
-for (int i = 0; i < splitterInput.Length; i++)
+List<int> ints = new List<int>();
+
+string[] splittedInput = input.Split();
+foreach (string number in splittedInput)
 {
-    string word = splitterInput[i];
-
-    /*if(Random.Shared.Next(1, 10) % 2 == 0)
+    //int result;
+    if (int.TryParse(number, out int result)) //deklaracja podczas przekazywania parametru wyjściowego
     {
-        i--;
-    }*/
-    Console.WriteLine($"Element: {word}");
+        ints.Add(result);
+    }
 }
 
 
-//foreach - pozwala przejsc po wszystkich elementach tablicy
-foreach (string word in splitterInput)
+int accumulator = 0;
+for (int counter = 0; counter < ints.Count; counter++)
 {
-    Console.WriteLine($"Element: {word}");
-}
+    int value = ints[counter];
 
+    if (value % 2 != 0)
+    {
+        continue; //przerywa aktualną iterację i przeskakuje do następnej iteracji pętli
+    }
 
-//za pomocą for mamy dostęp do indeksu elementu
-//i możemy zmieniać jego wartość w tablicy
-for (int i = 0; i < splitterInput.Length; i++)
-{
-    if (splitterInput[i] == "ala")
-        splitterInput[i] = "kot";
+    accumulator += value;
 
-    Console.WriteLine(splitterInput[i]);
-}
-
-//foreach - pozwala wykonać jakąś operację na każdym elemencie tablicy
-//jednak za jego pomocą nie możemy zmieniać elementów tablicy
-foreach (string word in splitterInput)
-{
-    Console.WriteLine(word);
+    if (accumulator >= 100)
+    {
+        Console.WriteLine($"Wykorzystano {counter + 1} wartości by osiągnąć wynik 100");
+        break; //przerywa działanie pętli
+    }
 }
