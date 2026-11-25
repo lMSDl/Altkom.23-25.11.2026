@@ -14,6 +14,35 @@ namespace Models; // namespace ograniczają klamry, jednak jeśli zastosujemy ś
 //pełna nazwa klasy to <namespace>.<nazwa>
 public class Person
 {
+    //metoda konstrukcyjna  (konstruktor) - bezparametrowy
+    //brak określenia typu zwracanego i nazwa taka sama jak nazwa klasy
+    //metody konstrukcyjne są potrzebne, aby wstępnie skonfigurować obiekt
+    //jeśli klasa NIE MA ŻADNEGO zdefiniowanego konstruktora, to konstruktor bezparametrowy jest generowany automatycznie
+    public Person()
+    {
+        //_name = "brak";
+        //LastName = "brak";
+    }
+
+    //konstruktor parametrowy - służy do zapewnienia klasie wartości początkowych przekazanych jako parametry
+    //jeśli w klasie występuje jakiś konstuktor parametrowy, to konstuktor bezparametrowy nie zostanie automatycznie wygenerowany
+    //chcąc posiadać jednocześnie konstruktor parametrowy i bezparametrowy musimy go jawnie utworzyć
+    public Person(string name)
+    {
+        _name = name;
+    }
+
+    //przeciążanie konstruktorów - możemy mieć wiele konstruktorów w klasie, ale muszą się różnić liczbą lub typem parametrów
+    //konstruktor teleskopowy - rozszeża możliwości innego konstruktora, przekazują do niego część parametrów przez "this"
+    public Person(string name, string lastName, int age) : this(name)
+    {
+        //_name = name;
+        LastName = lastName;
+        Age = age;
+    }
+
+
+
     //pole klasy (field) - to zmienna, która przechowuje stan obiektu
     //private - oznacza dostęp tylko dla elementów danej klasy (inne dostępne: public/internal/protected)
     //pola zazwyczaj są prywatne ze względu na hermetyzację, a dostęp realizowany jest przez metody dostępowe (getter i setter)
@@ -106,6 +135,7 @@ public class Person
     {
         return text.Substring(0, 1).ToUpper() + text.Substring(1).ToLower();
     }
+
 }
 
 

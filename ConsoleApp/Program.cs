@@ -1,5 +1,6 @@
 ﻿using ConsoleApp;
 using Models;
+using System.Threading.Channels;
 
 //Subjects.Introduction();
 //Subjects.Strings();
@@ -42,3 +43,9 @@ Console.WriteLine(person.GenerateBio());
 
 person.ChangeNamesToTitleCase();
 Console.WriteLine(person.GenerateBio());
+
+Person person2 = new Person("Adam");
+Console.WriteLine(person2.GenerateBio());
+
+
+Person person3 = new Person("Ewa", "Nowak", 30);
