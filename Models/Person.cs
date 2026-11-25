@@ -136,6 +136,11 @@ public class Person
         return text.Substring(0, 1).ToUpper() + text.Substring(1).ToLower();
     }
 
+    public override string ToString()
+    {
+        return GenerateBio();
+    }
+
 }
 
 

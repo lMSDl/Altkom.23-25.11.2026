@@ -49,3 +49,5 @@ Console.WriteLine(person2.GenerateBio());
 
 
 Person person3 = new Person("Ewa", "Nowak", 30);
+
+Console.WriteLine(person3);
